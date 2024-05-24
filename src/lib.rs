@@ -1,3 +1,18 @@
+/// A macro to help with axum route captures and wildcards
+///
+/// ```rust
+/// route!(SomeRoute => "/path/{}/with/{}", (:something: String, *parameter: u8));
+///
+/// assert_eq!(
+///     SomeRoute::handler_route(),
+///     "/path/:something/with/*parameter"
+/// );
+///
+/// assert_eq!(
+///     SomeRoute::route_path(String::from("test"), 13),
+///     "/path/test/with/13"
+/// );
+/// ```
 #[macro_export]
 macro_rules! route {
     ($name:ident => $route:literal, ($($arg_prefix:tt $arg:ident : $arg_type:ty),*)) => {

@@ -1,7 +1,7 @@
 # axum route helper
 
 ```rust
-route!(SomeRoute => "/path/{}/with/{}", (: something: String, *parameter: u8));
+route!(SomeRoute => "/path/{}/with/{}", (:something: String, *parameter: u8));
 
 assert_eq!(
     SomeRoute::handler_route(),
